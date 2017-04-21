@@ -1,0 +1,25 @@
+{
+  "name": "redux-action-builder",
+  "version": "1.0.0",
+  "description": "Small package to reduce the boilerplate when writing constants",
+  "main": "dist/index.js",
+  "types": "src/index",
+  "files": [
+    "dist/"
+  ],
+  "scripts": {
+    "tests": "mocha dist/test/*.test.js || true",
+    "transpile": "tsc || true",
+    "tt": "npm run transpile && npm run tests",
+    "watch": "watch 'npm run tt' src"
+  },
+  "keywords": ["redux", "constants", "builder", "reduce", "boilerplate"],
+  "author": "Stjepan Golemac",
+  "license": "ISC",
+  "dependencies": {},
+  "devDependencies": {
+    "@types/chai": "^3.5.1",
+    "@types/mocha": "^2.2.41",
+    "chai": "^3.5.0"
+  }
+}

@@ -1,0 +1,1 @@
+export const api = ['try', 'success', 'fail']
