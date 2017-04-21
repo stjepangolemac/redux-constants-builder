@@ -8,8 +8,12 @@ I plan to write builders for actions, reducers, selectors and sagas too. Stay tu
 TODO: Describe the installation process
 ## Usage
 ``` js
+/**
+* For CommonJS use
+* import { ConstantBuilder, suffixes } from 'redux-constant-builder'
+*/
 import RCB = require('redux-constant-builder'),
-  ConstantBuilder = RCB.default,
+  ConstantBuilder = RCB.ConstantBuilder,
   suffixes = RCB.suffixes
 
 const constants = ConstantBuilder.buildDeep(

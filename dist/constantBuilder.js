@@ -118,4 +118,4 @@ var ConstantBuilder = (function () {
     };
     return ConstantBuilder;
 }());
-exports.default = ConstantBuilder;
+exports.ConstantBuilder = ConstantBuilder;

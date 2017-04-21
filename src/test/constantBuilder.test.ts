@@ -1,7 +1,7 @@
 import { expect, should } from 'chai'
 should()
 
-import ConstantBuilder from '../'
+import { ConstantBuilder } from '../'
 
 describe('constantBuilder\'s', function () {
 

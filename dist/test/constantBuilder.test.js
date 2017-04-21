@@ -7,7 +7,7 @@ describe('constantBuilder\'s', function () {
     describe('incorrect calls', function () {
         it('should throw if no arguments', function () {
             var badCall = function () {
-                _1.default.buildFlat(undefined, undefined);
+                _1.ConstantBuilder.buildFlat(undefined, undefined);
             };
             chai_1.expect(badCall)
                 .to
@@ -15,7 +15,7 @@ describe('constantBuilder\'s', function () {
         });
         it('should throw if no verb', function () {
             var badCall = function () {
-                _1.default.buildFlat('raggabomb', undefined);
+                _1.ConstantBuilder.buildFlat('raggabomb', undefined);
             };
             chai_1.expect(badCall)
                 .to
@@ -27,7 +27,7 @@ describe('constantBuilder\'s', function () {
             var constants = (_a = {},
                 _a['FROGS_JUMP'] = 'frogs-jump',
                 _a);
-            _1.default
+            _1.ConstantBuilder
                 .buildFlat('frogs', 'jump')
                 .should
                 .be
@@ -41,7 +41,7 @@ describe('constantBuilder\'s', function () {
                 _a['FROGS_EAT'] = 'frogs-eat',
                 _a['FROGS_DIE'] = 'frogs-die',
                 _a);
-            _1.default
+            _1.ConstantBuilder
                 .buildFlat('frogs', ['jump', 'eat', 'die'])
                 .should
                 .be
@@ -58,7 +58,7 @@ describe('constantBuilder\'s', function () {
                 _a['FROGS_DIE_WHILEHIGH'] = 'frogs-die-whilehigh',
                 _a);
             var suffixes = ['hard', 'mygawd', 'whilehigh'];
-            _1.default
+            _1.ConstantBuilder
                 .buildFlat('frogs', ['jump', 'eat', 'die'], [null, null, suffixes])
                 .should
                 .be
@@ -70,7 +70,7 @@ describe('constantBuilder\'s', function () {
             var constants = (_a = {},
                 _a['JUMP'] = 'frogs-jump',
                 _a);
-            _1.default
+            _1.ConstantBuilder
                 .buildDeep('frogs', 'jump')
                 .should
                 .be
@@ -84,7 +84,7 @@ describe('constantBuilder\'s', function () {
                 _a['EAT'] = 'frogs-eat',
                 _a['DIE'] = 'frogs-die',
                 _a);
-            _1.default
+            _1.ConstantBuilder
                 .buildDeep('frogs', ['jump', 'eat', 'die'])
                 .should
                 .be
@@ -103,7 +103,7 @@ describe('constantBuilder\'s', function () {
                     _b),
                 _a);
             var suffixes = ['hard', 'mygawd', 'whilehigh'];
-            _1.default
+            _1.ConstantBuilder
                 .buildDeep('frogs', ['jump', 'eat', 'die'], [null, null, suffixes])
                 .should
                 .be
