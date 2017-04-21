@@ -2,6 +2,8 @@
 Small package to reduce the boilerplate when writing redux constants.
 
 The reason I wrote this thing is the size of Redux boilerplate that needs to be written at every project setup. There are similar libraries but I didn't like them so I wrote this one.
+
+I plan to write builders for actions, reducers, selectors and sagas too. Stay tuned.
 ## Installation
 TODO: Describe the installation process
 ## Usage

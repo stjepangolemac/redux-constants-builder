@@ -13,13 +13,22 @@
     "tt": "npm run transpile && npm run tests",
     "watch": "watch 'npm run tt' src"
   },
-  "keywords": ["redux", "constants", "builder", "reduce", "boilerplate"],
+  "keywords": [
+    "redux",
+    "constants",
+    "builder",
+    "reduce",
+    "boilerplate"
+  ],
   "author": "Stjepan Golemac",
   "license": "ISC",
   "dependencies": {},
   "devDependencies": {
     "@types/chai": "^3.5.1",
     "@types/mocha": "^2.2.41",
-    "chai": "^3.5.0"
+    "chai": "^3.5.0",
+    "mocha": "^3.2.0",
+    "typescript": "^2.2.2",
+    "watch": "^1.0.2"
   }
 }
