@@ -10,9 +10,9 @@ I plan to write builders for actions, reducers, selectors and sagas too. Stay tu
 ``` js
 /**
 * For CommonJS use
-* import { ConstantBuilder, suffixes } from 'redux-constant-builder'
+* import { ConstantBuilder, suffixes } from 'redux-constants-builder'
 */
-import RCB = require('redux-constant-builder'),
+import RCB = require('redux-constants-builder'),
   ConstantBuilder = RCB.ConstantBuilder,
   suffixes = RCB.suffixes
 
