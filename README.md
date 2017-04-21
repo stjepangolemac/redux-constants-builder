@@ -5,7 +5,7 @@ The reason I wrote this thing is the size of Redux boilerplate that needs to be 
 
 I plan to write builders for actions, reducers, selectors and sagas too. Stay tuned.
 ## Installation
-TODO: Describe the installation process
+`npm install --save redux-constants-builder`
 ## Usage
 ``` js
 /**
