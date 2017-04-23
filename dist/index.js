@@ -1,7 +1,7 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-var constantBuilder_1 = require("./constantBuilder");
-exports.ConstantBuilder = constantBuilder_1.ConstantBuilder;
+var constantsBuilder_1 = require("./constantsBuilder");
+exports.ConstantsBuilder = constantsBuilder_1.ConstantsBuilder;
 var suffixes = require("./utils/suffixes");
 exports.suffixes = suffixes;
 var errors = require("./utils/errors");

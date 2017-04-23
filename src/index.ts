@@ -1,9 +1,9 @@
-import { ConstantBuilder } from './constantBuilder'
+import { ConstantsBuilder } from './constantsBuilder'
 import * as suffixes from './utils/suffixes'
 import * as errors from './utils/errors'
 
 export {
-  ConstantBuilder,
+  ConstantsBuilder,
   suffixes,
   errors
 }

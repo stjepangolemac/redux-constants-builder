@@ -2,7 +2,7 @@ import {
   ArgumentError
 } from './utils/errors'
 
-export class ConstantBuilder {
+export class ConstantsBuilder {
 
   /**
    * Builds constants from passed arguments and returns them as deep object.

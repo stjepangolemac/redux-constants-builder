@@ -1,16 +1,16 @@
 import { expect, should } from 'chai'
 should()
 
-import { ConstantBuilder } from '../'
+import { ConstantsBuilder } from '../'
 
-describe('constantBuilder\'s', function () {
+describe('ConstantsBuilder\'s', function () {
 
   describe('incorrect calls', function () {
 
     it('should throw if no arguments', function () {
 
       const badCall = function () {
-        ConstantBuilder.buildFlat(undefined, undefined)
+        ConstantsBuilder.buildFlat(undefined, undefined)
       }
 
       expect(badCall)
@@ -21,7 +21,7 @@ describe('constantBuilder\'s', function () {
     it('should throw if no verb', function () {
 
       const badCall = function () {
-        ConstantBuilder.buildFlat('raggabomb', undefined)
+        ConstantsBuilder.buildFlat('raggabomb', undefined)
       }
 
       expect(badCall)
@@ -38,7 +38,7 @@ describe('constantBuilder\'s', function () {
         ['FROGS_JUMP']: 'frogs-jump'
       }
 
-      ConstantBuilder
+      ConstantsBuilder
         .buildFlat(
           'frogs',
           'jump'
@@ -57,7 +57,7 @@ describe('constantBuilder\'s', function () {
         ['FROGS_DIE']: 'frogs-die'
       }
 
-      ConstantBuilder
+      ConstantsBuilder
         .buildFlat(
           'frogs',
           ['jump', 'eat', 'die']
@@ -80,7 +80,7 @@ describe('constantBuilder\'s', function () {
 
       const suffixes = ['hard', 'mygawd', 'whilehigh']
 
-      ConstantBuilder
+      ConstantsBuilder
         .buildFlat(
           'frogs',
           ['jump', 'eat', 'die'],
@@ -98,7 +98,7 @@ describe('constantBuilder\'s', function () {
         ['JUMP']: 'frogs-jump'
       }
 
-      ConstantBuilder
+      ConstantsBuilder
         .buildDeep(
           'frogs',
           'jump'
@@ -117,7 +117,7 @@ describe('constantBuilder\'s', function () {
         ['DIE']: 'frogs-die'
       }
 
-      ConstantBuilder
+      ConstantsBuilder
         .buildDeep(
           'frogs',
           ['jump', 'eat', 'die']
@@ -142,7 +142,7 @@ describe('constantBuilder\'s', function () {
 
       const suffixes = ['hard', 'mygawd', 'whilehigh']
 
-      ConstantBuilder
+      ConstantsBuilder
         .buildDeep(
           'frogs',
           ['jump', 'eat', 'die'],

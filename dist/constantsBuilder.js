@@ -1,8 +1,8 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 var errors_1 = require("./utils/errors");
-var ConstantBuilder = (function () {
-    function ConstantBuilder() {
+var ConstantsBuilder = (function () {
+    function ConstantsBuilder() {
     }
     /**
      * Builds constants from passed arguments and returns them as deep object.
@@ -10,7 +10,7 @@ var ConstantBuilder = (function () {
      * @param verb
      * @param suffixes
      */
-    ConstantBuilder.buildDeep = function (entity, verb, suffixes) {
+    ConstantsBuilder.buildDeep = function (entity, verb, suffixes) {
         var _constants = this._build(entity, verb, suffixes);
         var constants = {};
         _constants.forEach(function (entry) {
@@ -41,7 +41,7 @@ var ConstantBuilder = (function () {
      * @param verb
      * @param suffixes
      */
-    ConstantBuilder.buildFlat = function (entity, verb, suffixes) {
+    ConstantsBuilder.buildFlat = function (entity, verb, suffixes) {
         var _this = this;
         var _constants = this._build(entity, verb, suffixes);
         var constants = {};
@@ -56,7 +56,7 @@ var ConstantBuilder = (function () {
      * @param verb
      * @param suffixes
      */
-    ConstantBuilder._build = function (entity, verb, suffixes) {
+    ConstantsBuilder._build = function (entity, verb, suffixes) {
         var _this = this;
         if (entity === undefined || verb === undefined) {
             throw new errors_1.ArgumentError(errors_1.ArgumentError.UNDEFINED_ARG);
@@ -90,14 +90,14 @@ var ConstantBuilder = (function () {
      * Transforms a constant value to constant name.
      * @param propValue
      */
-    ConstantBuilder._makePropName = function (propValue) {
+    ConstantsBuilder._makePropName = function (propValue) {
         return propValue.split('-').join('_').toUpperCase();
     };
     /**
      * Flattens the matrix of strings to a string array.
      * @param matrix
      */
-    ConstantBuilder._flatten = function (matrix) {
+    ConstantsBuilder._flatten = function (matrix) {
         var result = [];
         matrix.forEach(function (row) {
             row.forEach(function (entry) { return result.push(entry); });
@@ -111,11 +111,11 @@ var ConstantBuilder = (function () {
      * @param wordArray
      * @param noline
      */
-    ConstantBuilder._combine = function (word, wordArray, noDash) {
+    ConstantsBuilder._combine = function (word, wordArray, noDash) {
         return wordArray.map(function (entry) {
             return "" + word + (noDash ? '' : '-') + entry;
         });
     };
-    return ConstantBuilder;
+    return ConstantsBuilder;
 }());
-exports.ConstantBuilder = ConstantBuilder;
+exports.ConstantsBuilder = ConstantsBuilder;
