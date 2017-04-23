@@ -1,6 +1,6 @@
 {
   "name": "redux-constants-builder",
-  "version": "1.0.4",
+  "version": "1.0.5",
   "description": "Small package to reduce the boilerplate when writing redux constants",
   "main": "dist/index.js",
   "types": "src/index",
