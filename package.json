@@ -1,6 +1,6 @@
 {
   "name": "redux-constants-builder",
-  "version": "1.0.5",
+  "version": "2.0.0",
   "description": "Small package to reduce the boilerplate when writing redux constants",
   "repository": {
     "type": "git",
