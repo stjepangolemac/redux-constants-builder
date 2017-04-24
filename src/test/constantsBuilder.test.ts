@@ -35,7 +35,7 @@ describe('ConstantsBuilder\'s', function () {
     it('should create one flat constant', function () {
 
       const constants = {
-        ['FROGS_JUMP']: 'frogs-jump'
+        ['JUMP']: 'frogs-jump'
       }
 
       ConstantsBuilder
@@ -52,9 +52,9 @@ describe('ConstantsBuilder\'s', function () {
     it('should create multiple flat constants', function () {
 
       const constants = {
-        ['FROGS_JUMP']: 'frogs-jump',
-        ['FROGS_EAT']: 'frogs-eat',
-        ['FROGS_DIE']: 'frogs-die'
+        ['JUMP']: 'frogs-jump',
+        ['EAT']: 'frogs-eat',
+        ['DIE']: 'frogs-die'
       }
 
       ConstantsBuilder
@@ -71,11 +71,11 @@ describe('ConstantsBuilder\'s', function () {
     it('should create suffixed flat constants', function () {
 
       const constants = {
-        ['FROGS_JUMP']: 'frogs-jump',
-        ['FROGS_EAT']: 'frogs-eat',
-        ['FROGS_DIE_HARD']: 'frogs-die-hard',
-        ['FROGS_DIE_MYGAWD']: 'frogs-die-mygawd',
-        ['FROGS_DIE_WHILEHIGH']: 'frogs-die-whilehigh'
+        ['JUMP']: 'frogs-jump',
+        ['EAT']: 'frogs-eat',
+        ['DIE_HARD']: 'frogs-die-hard',
+        ['DIE_MYGAWD']: 'frogs-die-mygawd',
+        ['DIE_WHILEHIGH']: 'frogs-die-whilehigh'
       }
 
       const suffixes = ['hard', 'mygawd', 'whilehigh']
@@ -147,6 +147,60 @@ describe('ConstantsBuilder\'s', function () {
           'frogs',
           ['jump', 'eat', 'die'],
           [null, null, suffixes]
+        )
+        .should
+        .be
+        .deep
+        .equal(constants)
+    })
+
+    it('should create prefixed and suffixed flat constants', function () {
+
+      const constants = {
+        ['FROGS_JUMP']: 'frogs-jump',
+        ['FROGS_EAT']: 'frogs-eat',
+        ['FROGS_DIE_HARD']: 'frogs-die-hard',
+        ['FROGS_DIE_MYGAWD']: 'frogs-die-mygawd',
+        ['FROGS_DIE_WHILEHIGH']: 'frogs-die-whilehigh'
+      }
+
+      const suffixes = ['hard', 'mygawd', 'whilehigh']
+
+      ConstantsBuilder
+        .buildFlat(
+          'frogs',
+          ['jump', 'eat', 'die'],
+          [null, null, suffixes],
+          true
+        )
+        .should
+        .be
+        .deep
+        .equal(constants)
+    })
+
+    it('should create prefixed and suffixed deep constants', function () {
+
+      const constants = {
+        ['FROGS']: {
+          ['JUMP']: 'frogs-jump',
+          ['EAT']: 'frogs-eat',
+          ['DIE']: {
+            ['HARD']: 'frogs-die-hard',
+            ['MYGAWD']: 'frogs-die-mygawd',
+            ['WHILEHIGH']: 'frogs-die-whilehigh'
+          }
+        }
+      }
+
+      const suffixes = ['hard', 'mygawd', 'whilehigh']
+
+      ConstantsBuilder
+        .buildDeep(
+          'frogs',
+          ['jump', 'eat', 'die'],
+          [null, null, suffixes],
+          true
         )
         .should
         .be

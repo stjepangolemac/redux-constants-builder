@@ -7,15 +7,17 @@ export class ConstantsBuilder {
   /**
    * Builds constants from passed arguments and returns them as deep object.
    * @param entity
-   * @param verb
+   * @param verbs
    * @param suffixes
    */
   public static buildDeep (
     entity: string,
-    verb: string | [string],
-    suffixes?: string[][]) {
+    verbs: string | string[],
+    suffixes?: string[][],
+    prefix?: boolean) {
 
-    const _constants = this._build(entity, verb, suffixes)
+    const _constants = this._build(entity, verbs, suffixes)
+    const _prefix = _constants[0].split('-')[0].toUpperCase()
 
     const constants = {}
 
@@ -38,26 +40,31 @@ export class ConstantsBuilder {
       }
     })
     
-    return constants
+    if(prefix) {
+      return { [_prefix]: constants }
+    } else {
+      return constants
+    }
   }
 
   /**
    * Builds constants from passed arguments and returns them as flat object.
    * @param entity
-   * @param verb
+   * @param verbs
    * @param suffixes
    */
   public static buildFlat (
     entity: string,
-    verb: string | [string],
-    suffixes?: string[][]) {
+    verbs: string | string[],
+    suffixes?: string[][],
+    prefix?: boolean) {
 
-    const _constants = this._build(entity, verb, suffixes)
+    const _constants = this._build(entity, verbs, suffixes)
 
     const constants = {}
 
       _constants.forEach((entry: string) => {
-      constants[this._makePropName(entry)] = entry.toLowerCase()
+      constants[this._makePropName(entry, !prefix)] = entry.toLowerCase()
     })
 
     return constants
@@ -66,22 +73,22 @@ export class ConstantsBuilder {
   /**
    * Builds constants from passed arguments and returns them as array.
    * @param entity
-   * @param verb
+   * @param verbs
    * @param suffixes
    */
   public static _build (
     entity: string,
-    verb: string | [string],
+    verbs: string | string[],
     suffixes?: string[][]) {
 
-    if (entity === undefined || verb === undefined) {
+    if (entity === undefined || verbs === undefined) {
       throw new ArgumentError(ArgumentError.UNDEFINED_ARG)
     }
     if (Array.isArray(entity)) {
       throw new ArgumentError(ArgumentError.ARRAY_ARG)
     }
 
-    Array.isArray(verb) ? null : verb = [verb]
+    Array.isArray(verbs) ? null : verbs = [verbs]
 
     let _constants = []
 
@@ -95,7 +102,7 @@ export class ConstantsBuilder {
       })
     }
 
-    verb.forEach((entry, index) => {
+    verbs.forEach((entry, index) => {
       if (_constants[index]) {
         _constants[index] = this._combine(entry, _constants[index])
       } else {
@@ -103,16 +110,26 @@ export class ConstantsBuilder {
       }
     })
 
-    return this._combine(entity, this._flatten(_constants))
+    const list = this._combine(entity, this._flatten(_constants))
+
+    return list
   }
 
   /**
    * Transforms a constant value to constant name.
    * @param propValue
    */
-  private static _makePropName (propValue: string) {
+  private static _makePropName (propValue: string, cutPrefix?: boolean) {
 
-    return propValue.split('-').join('_').toUpperCase()
+    let result: string | string[] = propValue.split('-')
+
+    if(cutPrefix) {
+      result = result.slice(1).join('_')
+    } else {
+      result = result.join('_')
+    }
+
+    return result.toUpperCase()
   }
 
   /**

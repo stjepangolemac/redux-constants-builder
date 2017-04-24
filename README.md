@@ -7,47 +7,128 @@ I plan to write builders for actions, reducers, selectors and sagas too. Stay tu
 ## Installation
 `npm install --save redux-constants-builder`
 ## Usage
+To import this package just use:
 ``` js
-/**
-* For CommonJS use
-* import { ConstantsBuilder, suffixes } from 'redux-constants-builder'
-*/
-var RCB = require('redux-constants-builder'),
-  ConstantsBuilder = RCB.ConstantsBuilder,
-  suffixes = RCB.suffixes
+import {
+  ConstantsBuilder,
+  suffixes
+} from 'redux-constants-builder'
+```
+## API
+For now, there are only ConstantsBuilder and suffixes. More on suffixes below.
+### `buildFlat(entity, verbs, suffixes, prefix)`
+Builds constants from passed arguments and returns them as flat object.
+- entity: string
+- verbs: string | string[]
+- suffixes?: string[][]
+- prefix?: boolean
 
-const constants = ConstantsBuilder.buildDeep(
-  'auth',
-  ['reset', 'login', 'refresh'],
-  [null, suffixes.api, suffixes.api]
-)
+An example without a prefix:
+``` js
+const api = suffixes.api
+
+const constants = ConstantsBuilder
+  .buildFlat(
+    'repos',
+    ['get', 'post', 'clear'],
+    [api, api, null]
+  )
 ```
 Results in:
-``` js
+```
 {
-  RESET: 'auth-reset',
-  LOGIN: {
-    TRY: 'auth-login-try',
-    SUCCESS: 'auth-login-success',
-    FAIL: 'auth-login-fail'
+  GET_TRY: 'repos-get-try',
+  GET_SUCCESS: 'repos-get-success',
+  GET_FAIL: 'repos-get-fail',
+  POST_TRY: 'repos-post-try',
+  POST_SUCCESS: 'repos-post-success',
+  POST_FAIL: 'repos-post-fail',
+  CLEAR: 'repos-clear'
+}
+```
+Or when prefixed:
+```
+{
+  REPOS_GET_TRY: 'repos-get-try',
+  REPOS_GET_SUCCESS: 'repos-get-success',
+  REPOS_GET_FAIL: 'repos-get-fail',
+  REPOS_POST_TRY: 'repos-post-try',
+  REPOS_POST_SUCCESS: 'repos-post-success',
+  REPOS_POST_FAIL: 'repos-post-fail',
+  REPOS_CLEAR: 'repos-clear'
+}
+```
+### `buildDeep(entity, verbs, suffixes, prefix)`
+Builds constants from passed arguments and returns them as deep object.
+- entity: string
+- verbs: string | string[]
+- suffixes?: string[][]
+- prefix?: boolean
+
+An example without a prefix:
+``` js
+const api = suffixes.api
+
+const constants = ConstantsBuilder
+  .buildDeep(
+    'repos',
+    ['get', 'post', 'clear'],
+    [api, api, null]
+  )
+```
+Results in:
+```
+{
+  GET: {
+    TRY: 'repos-get-try',
+    SUCCESS: 'repos-get-success',
+    FAIL: 'repos-get-fail'
   },
-  REFRESH: {
-    TRY: 'auth-refresh-try',
-    SUCCESS: 'auth-refresh-success',
-    FAIL: 'auth-refresh-fail'
+  POST: {
+    TRY: 'repos-post-try',
+    SUCCESS: 'repos-post-success',
+    FAIL: 'repos-post-fail'
+  },
+  CLEAR: 'repos-clear'
+}
+```
+Or when prefixed:
+```
+{
+  REPOS: {
+    GET: {
+      TRY: 'repos-get-try',
+      SUCCESS: 'repos-get-success',
+      FAIL: 'repos-get-fail'
+    },
+    POST: {
+      TRY: 'repos-post-try',
+      SUCCESS: 'repos-post-success',
+      FAIL: 'repos-post-fail'
+    },
+    CLEAR: 'repos-clear'
   }
 }
 ```
-And if you replace `buildDeep` with `buildFlat` you get:
+### Suffixes
+Suffixes are just arrays of strings and you can create your own as you please. For example:
 ``` js
+const randomSuffix = ['foo', 'bar', 'baz']
+
+const constants = ConstantsBuilder
+  .buildFlat(
+    'fruit',
+    ['apples', 'oranges'],
+    [randomSuffix, null]
+  )
+```
+Results in:
+```
 {
-  AUTH_RESET_TOKENS: 'auth-reset',
-  AUTH_LOGIN_TRY: 'auth-login-try',
-  AUTH_LOGIN_SUCCESS: 'auth-login-success',
-  AUTH_LOGIN_FAIL: 'auth-login-fail',
-  AUTH_REFRESH_TRY: 'auth-refresh-try',
-  AUTH_REFRESH_SUCCESS: 'auth-refresh-success',
-  AUTH_REFRESH_FAIL: 'auth-refresh-fail'
+  APPLES_FOO: 'fruit-apples-foo',
+  APPLES_BAR: 'fruit-apples-bar',
+  APPLES_BAZ: 'fruit-apples-baz',
+  ORANGES: 'fruit-oranges'
 }
 ```
 ## Contributing
@@ -56,10 +137,6 @@ And if you replace `buildDeep` with `buildFlat` you get:
 3. Commit your changes: `git commit -am 'Add some feature'`
 4. Push to the branch: `git push origin my-new-feature`
 5. Submit a pull request :D
-## History
-TODO: Write history
-## Credits
-TODO: Write credits
 ## License
 MIT License
 

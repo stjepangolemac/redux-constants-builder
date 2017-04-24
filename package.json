@@ -2,16 +2,22 @@
   "name": "redux-constants-builder",
   "version": "1.0.5",
   "description": "Small package to reduce the boilerplate when writing redux constants",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/stjepangolemac/redux-constants-builder"
+  },
   "main": "dist/index.js",
   "types": "src/index",
   "files": [
     "dist/"
   ],
   "scripts": {
-    "tests": "mocha dist/test/*.test.js || true",
-    "transpile": "tsc || true",
-    "tt": "npm run transpile && npm run tests",
-    "watch": "watch 'npm run tt' src"
+    "test": "mocha dist/test/*.test.js",
+    "build": "tsc",
+    "dev": "npm run build && npm test",
+    "watch": "watch 'npm run dev' src",
+    "preversion": "npm test",
+    "version": "npm run build"
   },
   "keywords": [
     "redux",
@@ -21,7 +27,7 @@
     "boilerplate"
   ],
   "author": "Stjepan Golemac",
-  "license": "ISC",
+  "license": "MIT",
   "dependencies": {},
   "devDependencies": {
     "@types/chai": "^3.5.1",
