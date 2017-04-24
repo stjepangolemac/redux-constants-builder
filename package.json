@@ -16,8 +16,7 @@
     "build": "tsc",
     "dev": "npm run build && npm test",
     "watch": "watch 'npm run dev' src",
-    "preversion": "npm test",
-    "version": "npm run build"
+    "preversion": "npm run build && npm test"
   },
   "keywords": [
     "redux",
