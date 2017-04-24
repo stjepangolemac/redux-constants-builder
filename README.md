@@ -4,8 +4,10 @@ Small package to reduce the boilerplate when writing redux constants.
 The reason I wrote this thing is the size of Redux boilerplate that needs to be written at every project setup. There are similar libraries but I didn't like them so I wrote this one.
 
 I plan to write builders for actions, reducers, selectors and sagas too. Stay tuned.
+
 ## Installation
 `npm install --save redux-constants-builder`
+
 ## Usage
 To import this package just use:
 ``` js
@@ -14,8 +16,10 @@ import {
   suffixes
 } from 'redux-constants-builder'
 ```
+
 ## API
 For now, there are only ConstantsBuilder and suffixes. More on suffixes below.
+
 ### `buildFlat(entity, verbs, suffixes, prefix)`
 Builds constants from passed arguments and returns them as flat object.
 - entity: string
@@ -58,6 +62,7 @@ Or when prefixed:
   REPOS_CLEAR: 'repos-clear'
 }
 ```
+
 ### `buildDeep(entity, verbs, suffixes, prefix)`
 Builds constants from passed arguments and returns them as deep object.
 - entity: string
@@ -110,6 +115,7 @@ Or when prefixed:
   }
 }
 ```
+
 ### Suffixes
 Suffixes are just arrays of strings and you can create your own as you please. For example:
 ``` js
@@ -131,12 +137,14 @@ Results in:
   ORANGES: 'fruit-oranges'
 }
 ```
+
 ## Contributing
 1. Fork it!
 2. Create your feature branch: `git checkout -b my-new-feature`
 3. Commit your changes: `git commit -am 'Add some feature'`
 4. Push to the branch: `git push origin my-new-feature`
 5. Submit a pull request :D
+
 ## License
 MIT License
 
